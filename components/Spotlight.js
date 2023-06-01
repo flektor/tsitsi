@@ -3,13 +3,17 @@ import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/router.js";
 import { useEffect, useState } from "react";
+import FavoriteButton from "./FavoriteButton";
 
-export default function Spotlight({ pieces }) {
+export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
   const [piece, setPiece] = useState(getRandomPieceArt());
 
   function getRandomPieceArt() {
     return pieces[Math.floor(Math.random() * pieces.length)];
   }
+
+  const artPieceInfo =
+    artPiecesInfo.find((item) => item.slug === piece.slug) ?? false;
 
   return (
     <>
@@ -17,6 +21,12 @@ export default function Spotlight({ pieces }) {
 
       <strong>
         <h2>{piece.slug}</h2>
+        <FavoriteButton
+          onToggleFavorite={onToggleFavorite}
+          isFavorite={artPieceInfo.isFavorite}
+          slug={piece.slug}
+        />
+
         <Link href={`/`}>Pieces</Link>
         <Image
           src={piece.imageSource}
