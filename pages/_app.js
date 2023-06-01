@@ -1,17 +1,40 @@
 import GlobalStyle from "../styles";
 import Layout from "../components/Layout";
 import useSWR, { SWRConfig } from "swr";
-import { useEffect, useState } from "react";
-import { useImmer } from "use-immer";
+import { freeze, produce } from "immer";
+import useLocalStorageState from "use-local-storage-state";
+import { useCallback } from "react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
+
+function useImmerLocalStorageState(key, options) {
+  //
+  const [value, setValue] = useLocalStorageState(key, {
+    ...options,
+    defaultValue: freeze(options.defaultValue),
+  });
+
+  return [
+    value,
+    useCallback(
+      (updater) => {
+        if (typeof updater === "function") setValue(produce(updater));
+        else setValue(freeze(updater));
+      },
+      [setValue]
+    ),
+  ];
+}
 
 export default function App({ Component, pageProps }) {
   const url = "https://example-apis.vercel.app/api/art";
 
   const { data, error, isLoading } = useSWR(url, fetcher);
 
-  const [artPiecesInfo, updateArtPiecesInfo] = useImmer([]);
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: [] }
+  );
 
   if (error) return "An error has occurred.";
   if (isLoading) return "Loading...";
