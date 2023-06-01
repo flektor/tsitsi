@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 import { Fragment } from "react";
-
 export default function ArtPieces({ pieces }) {
   return (
     <div>
@@ -9,13 +9,6 @@ export default function ArtPieces({ pieces }) {
       {pieces.map((piece) => (
         <Fragment key={piece.slug}>
           <h2>{piece.name}</h2>
-          {/* <Image
-            src={piece.imageSource}
-            alt={piece.name}
-            height={piece.dimensions.height}
-            width={piece.dimensions.width}
-            sizes="100vw"
-          /> */}
           <Image
             src={piece.imageSource}
             alt={piece.name}
@@ -25,6 +18,8 @@ export default function ArtPieces({ pieces }) {
             style={{ width: "100%", height: "auto" }} // optional
           />
           Artist: <strong>{piece.artist}</strong>
+          <Link href={`/${piece.slug}`} pieces={pieces} >Spotlight</Link>
+          <Link href={`/art-pieces/${piece.slug}`}  pieces={pieces}>Art-Piece Details</Link>
         </Fragment>
       ))}
     </div>
