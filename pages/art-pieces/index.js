@@ -1,9 +1,9 @@
 import ArtPieces from "../../components/ArtPieces";
 
-export default function Index({ pieces }) {
+export default function Index(props) {
   return (
     <div>
-      <ArtPieces pieces={pieces} />
+      <ArtPieces {...props} />
     </div>
   );
 }

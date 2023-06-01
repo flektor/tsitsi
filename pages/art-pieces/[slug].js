@@ -1,7 +1,11 @@
 import { useRouter } from "next/router.js";
 import ArtPieceDetails from "../../components/ArtPieceDetails";
 import PageNotFound from "../../components/pageNotFound";
-export default function ArtDetails({ pieces }) {
+export default function ArtDetails({
+  pieces,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   const router = useRouter();
 
   if (!pieces || pieces.length === 0) {
@@ -16,5 +20,15 @@ export default function ArtDetails({ pieces }) {
     return <PageNotFound />;
   }
 
-  return <ArtPieceDetails {...piece} />;
+  const artPieceInfo =
+    artPiecesInfo.find((item) => item.slug === piece.slug) ?? false;
+
+  const isFavorite = artPieceInfo && artPieceInfo.isFavorite;
+  return (
+    <ArtPieceDetails
+      {...piece}
+      isFavorite={isFavorite}
+      onToggleFavorite={onToggleFavorite}
+    />
+  );
 }
