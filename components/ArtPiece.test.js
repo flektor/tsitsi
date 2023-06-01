@@ -49,67 +49,80 @@ const mocked = [
   },
 ];
 
-describe("testing ArtPiece component", () => {
+//
+describe("test with expected props", () => {
   it("should render all art pieces are displayed as a list", () => {
     render(<ArtPieces pieces={mocked} />);
 
-    const list = screen.getByRole("list", {
-      name: /artPieces/i,
-    });
+    const list = screen.getByRole("list", { name: /artPieces/i });
 
     const { getAllByRole } = within(list);
 
     const items = getAllByRole("listitem");
 
-    expect(items.length).toBe(3);
+    expect(items.length).toBe(mocked.length);
   });
 
   it("should render each art piece's image", () => {
+    const expected = mocked.map(
+      (art) =>
+        art.imageSource
+          .replaceAll("/", "%2F")
+          .replace("https:", "http://localhost/_next/image?url=https%3A") +
+        "&w=3840&q=75"
+    );
+
     render(<ArtPieces pieces={mocked} />);
 
-    const list = screen.getByRole("list", {
-      name: /artPieces/i,
-    });
+    const list = screen.getByRole("list", { name: /artPieces/i });
 
-    const images = within(list).getAllByRole("img");
-    images.map((image) => {
-      expect(image.src).toBeTruthy();
-    });
-    expect(images.length).toBe(3);
+    const images = within(list)
+      .getAllByRole("img")
+      .map((image) => image.src);
+
+    expect(images).toEqual(expected);
   });
 
   it("should render each art piece's title", () => {
+    const expected = mocked.map((piece) => piece.name);
+
     render(<ArtPieces pieces={mocked} />);
 
-    const list = screen.getByRole("list", {
-      name: /artPieces/i,
-    });
+    const list = screen.getByRole("list", { name: /artPieces/i });
 
-    const titles = within(list).getByText();
-    titles.map((title) => {
-      expect(title).toBeTruthy();
-    });
-    expect(titles.length).toBe(3);
+    const headings = within(list).getAllByRole("heading");
+
+    const titles = headings.map((heading) => heading.textContent);
+
+    expect(titles).toEqual(expected);
   });
 
   it("should render each art piece's artist", () => {
+    const expected = mocked.map((piece) => piece.artist);
+
     render(<ArtPieces pieces={mocked} />);
 
-    const list = screen.getByRole("list", {
-      name: /artPieces/i,
-    });
+    const list = screen.getByRole("list", { name: /artPieces/i });
 
-    const items = within(list).getAllByRole("listitem");
+    const artists = within(list).getAllByLabelText("artist");
 
-    items.map((item) => {
-      let artist = item.textContent;
-      expect(artist).toContain("Artist: ");
-      console.log(artist);
+    const content = artists.map((artist) => artist.textContent);
+    expect(content).toEqual(expected);
+  });
+});
 
-      //   artist = artist.substring(0, "Artist: ".length - 1);
-      //   console.log(artist);
-      expect(artist).toBeTruthy();
-    });
-    expect(items.length).toBe(3);
+describe("test edge cases", () => {
+  it('should render "There is nothing to display" if the pieces prop is undefined', () => {
+    const { getAllByText } = render(<ArtPieces />);
+
+    const text = getAllByText("There is nothing to display");
+    expect(text).toBeTruthy();
+  });
+
+  it('should render "There is nothing to display" if the pieces prop has length equal to 0', () => {
+    const { getAllByText } = render(<ArtPieces pieces={[]} />);
+
+    const text = getAllByText("There is nothing to display");
+    expect(text).toBeTruthy();
   });
 });
