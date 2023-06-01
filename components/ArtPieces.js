@@ -19,7 +19,7 @@ export default function ArtPieces({ pieces }) {
           />
           Artist: <strong>{piece.artist}</strong>
           <Link href={`/${piece.slug}`} pieces={pieces} >Spotlight</Link>
-         <Link href={`${piece.slug}`} >ArtPieceDetails</Link>
+          <Link href={`/art-pieces/${piece.slug}`}  pieces={pieces}>Art-Piece Details</Link>
         </Fragment>
       ))}
     </div>
