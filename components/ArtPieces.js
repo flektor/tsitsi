@@ -1,6 +1,6 @@
 import Image from "next/image";
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
 export default function ArtPieces({ pieces }) {
   if (!pieces || pieces.length === 0) {
@@ -19,11 +19,8 @@ export default function ArtPieces({ pieces }) {
         // style={{ width: "100%", height: "auto" }} // optional
       />
       Artist: <strong aria-label="artist">{piece.artist}</strong>
-      <Link href={`/${piece.slug}`} pieces={pieces}>
-        Spotlight
-      </Link>
       <Link href={`/art-pieces/${piece.slug}`} pieces={pieces}>
-        Art-Piece Details
+        Details
       </Link>
     </li>
   ));
