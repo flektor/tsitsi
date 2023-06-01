@@ -28,6 +28,19 @@ export default function App({ Component, pageProps }) {
       draft.push({ slug, isFavorite: true });
     });
   }
+
+  function onSubmitComment(slug, context) {
+    updateArtPiecesInfo((draft) => {
+      const piece = draft.find((piece) => piece.slug === slug);
+
+      if (piece) {
+        piece.comments.push(context);
+        return;
+      }
+      draft.push({ slug, comments: [context] });
+    });
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -42,6 +55,7 @@ export default function App({ Component, pageProps }) {
             pieces={data}
             artPiecesInfo={artPiecesInfo}
             onToggleFavorite={onToggleFavorite}
+            onSubmitComment={onSubmitComment}
           />
         </Layout>
       </SWRConfig>

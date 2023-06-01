@@ -5,6 +5,7 @@ export default function ArtDetails({
   pieces,
   artPiecesInfo,
   onToggleFavorite,
+  onSubmitComment,
 }) {
   const router = useRouter();
 
@@ -29,6 +30,9 @@ export default function ArtDetails({
       {...piece}
       isFavorite={isFavorite}
       onToggleFavorite={onToggleFavorite}
+      colors={piece.colors}
+      onSubmitComment={onSubmitComment}
+      comments={artPieceInfo.comments}
     />
   );
 }
