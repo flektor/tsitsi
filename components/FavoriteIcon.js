@@ -7,13 +7,15 @@ const SVG = styled.svg`
 
 export default function FavoriteIcon({
   strokeColor = "black",
-  fillColor = "grey",
+  fillColor = "#e8e8e8",
+  width = "64px",
+  height = "64px",
 }) {
   return (
     <SVG
       xmlns="http://www.w3.org/2000/svg"
-      width="64px"
-      height="64px"
+      width={width}
+      height={height}
       viewBox="0 0 24 24"
       fill="none"
     >

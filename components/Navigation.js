@@ -2,39 +2,85 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 export default function Navigation({ children }) {
-  const _headerlist = styled.ul`
-  display: flex;
-  flex-flow: row;
-  align-items: stretch
-  position: fixed;
-  list-style: none;
-  margin: 0; 
-  Background-color: #956b6b;
-`;
-const _header_listitem = styled.li`
-display: flex;
-flex-flow: row wrap;
-padding:0.5em;
-justify-content: flex-end;
-list-style: none;
-margin: 0.1em; 
-font-style: oblique 60deg;
-font-family:'AmstelvarAlpha';
-font-weight: 900;
-`;
+  const Nav = styled.nav`
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #956b6b;
+    align-items: center;
+    z-index: 10;
+    height: 3em;
+  `;
+
+  const List = styled.ul`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    list-style: none;
+  `;
+
+  const Item = styled.li`
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  `;
+
+  const Title = styled.span`
+    justify-content: flex-end;
+    font-family: "AmstelvarAlpha";
+    padding-left: 1em;
+  `;
+
+  const Content = styled.div`
+    position: relative;
+  `;
+
+  const Children = styled.div`
+    padding-bottom: 8em;
+    margin-top: 4em;
+  `;
+
+  const Footer = styled.footer`
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #21252b;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 10em;
+  `;
 
   return (
-    <div>
-      <nav>
-      
-          <_headerlist>  
-          <_header_listitem>ART GALLERY</_header_listitem> 
-          <_header_listitem><Link href={"/art-pieces/"}>Pieces</Link></_header_listitem>
-          <_header_listitem><Link href={"/"}>Spotlight</Link></_header_listitem>
-          <_header_listitem><Link href={"/favorites"}>Favorites</Link></_header_listitem>
-        </_headerlist>
-      </nav>
-      {children}
-    </div>
+    <Content>
+      <Nav>
+        <Title>
+          <Link href={"/"} style={{ color: "white", textDecoration: "none" }}>
+            ART GALLERY
+          </Link>
+        </Title>
+        <List>
+          <Item>
+            <Link href={"/art-pieces/"} style={{ color: "white" }}>
+              Art Pieces
+            </Link>
+          </Item>
+          <Item>
+            <Link href={"/"} style={{ color: "white" }}>
+              Spotlight
+            </Link>
+          </Item>
+          <Item>
+            <Link href={"/favorites"} style={{ color: "white" }}>
+              Favorites
+            </Link>
+          </Item>
+        </List>
+      </Nav>
+      <Children>{children}</Children>
+
+      <Footer>Tsitsi® 2023</Footer>
+    </Content>
   );
 }
