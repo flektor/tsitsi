@@ -32,6 +32,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
       <Link href={`/art-pieces/${piece.slug}`} pieces={pieces}>
         Details
       </Link>
+      
     </li>
   ));
 
