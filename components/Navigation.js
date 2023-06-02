@@ -36,7 +36,7 @@ export default function Navigation({ children }) {
   `;
 
   const Children = styled.div`
-    padding-bottom: 8em;
+    padding-bottom: 2em;
     margin-top: 4em;
   `;
 
@@ -80,7 +80,7 @@ export default function Navigation({ children }) {
       </Nav>
       <Children>{children}</Children>
 
-      <Footer>Tsitsi® 2023</Footer>
+      {/* <Footer>Tsitsi® 2023</Footer> */}
     </Content>
   );
 }
