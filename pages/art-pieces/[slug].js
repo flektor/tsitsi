@@ -33,6 +33,7 @@ export default function ArtDetails({
       colors={piece.colors}
       onSubmitComment={onSubmitComment}
       comments={artPieceInfo.comments}
+      imageDimensions={piece.dimensions}
     />
   );
 }

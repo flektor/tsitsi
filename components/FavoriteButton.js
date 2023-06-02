@@ -7,14 +7,24 @@ const FavoriteButtonStyled = styled.button`
   border: 0;
 `;
 
-export default function FavoriteButton({ slug, isFavorite, onToggleFavorite }) {
+export default function FavoriteButton({
+  slug,
+  isFavorite,
+  onToggleFavorite,
+  width,
+  height,
+}) {
   return (
     <FavoriteButtonStyled
       type="button"
       aria-label="favorite"
       onClick={() => onToggleFavorite(slug)}
     >
-      {isFavorite ? <FavoriteIcon fillColor="red" /> : <FavoriteIcon />}
+      {isFavorite ? (
+        <FavoriteIcon fillColor="red" width={width} height={height} />
+      ) : (
+        <FavoriteIcon width={width} height={height} />
+      )}
     </FavoriteButtonStyled>
   );
 }

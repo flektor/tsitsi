@@ -57,6 +57,9 @@ export default function App({ Component, pageProps }) {
       const piece = draft.find((piece) => piece.slug === slug);
 
       if (piece) {
+        if (!piece.comments) {
+          piece.comments = [];
+        }
         piece.comments.push(context);
         return;
       }
