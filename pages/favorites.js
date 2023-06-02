@@ -87,7 +87,11 @@ export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
               Artist: <strong aria-label="artist">{piece.artist}</strong>
             </span>
 
-            <Link href={`/art-pieces/${piece.slug}`} pieces={pieces}>
+            <Link
+              href={`/art-pieces/${piece.slug}`}
+              pieces={pieces}
+              style={{ color: "white" }}
+            >
               Details
             </Link>
           </Footer>

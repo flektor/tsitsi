@@ -1,15 +1,18 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FavoriteButton from "./FavoriteButton";
 import useResize from "../hooks/use-resize";
 import { calculateAspectRatioFit } from "../utils/fit-image";
 import styled from "styled-components";
 import Link from "next/link";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
   const windowSize = useResize();
 
-  const [piece, setPiece] = useState(getRandomPieceArt());
+  const [piece, setPiece] = useLocalStorageState("random", {
+    defaultValue: getRandomPieceArt(),
+  });
 
   function getRandomPieceArt() {
     return pieces[Math.floor(Math.random() * pieces.length)];
@@ -41,6 +44,7 @@ export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
     justify-content: space-between;
     align-items: center;
     gap: 1em;
+    margin-bottom: 1em;
     width: 100%;
   `;
 
