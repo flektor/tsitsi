@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const Color = styled.div`
   width: 2em;
-  height: 2em;
+  height: 1em;
   border-radius: 50%;
   background-color: ${({ color }) => color};
   margin: 1em;
@@ -17,6 +17,7 @@ const Colors = styled.ul`
   display: flex;
   list-style: none;
 `;
+
 
 export default function ArtPieceDetails({
   name,
@@ -40,8 +41,9 @@ export default function ArtPieceDetails({
         slug={slug}
       />
       <Image src={imageSource} alt={name} width={300} height={300} />
-      Artist: <strong>{artist}</strong> {year}
-      Genre: <span aria-label="genre">{genre}</span>
+      <div> Artist: <strong>{artist}</strong> {year}<br />Genre: <span aria-label="genre">{genre}</span></div>
+     
+      
       <Colors>
         {colors.map((color, index) => (
           <li key={index}>
@@ -51,13 +53,13 @@ export default function ArtPieceDetails({
       </Colors>
       <hr />
       <CommentForm slug={slug} onSubmitComment={onSubmitComment} />
-      <ul>
+      <comments_>
         {comments.map((comment, index) => (
           <li key={index}>
             <Comment context={comment} />
           </li>
         ))}
-      </ul>
+      </comments_>
     </>
   );
 }
