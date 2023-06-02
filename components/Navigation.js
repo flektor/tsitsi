@@ -9,7 +9,7 @@ export default function Navigation({ children }) {
   position: fixed;
   list-style: none;
   margin: 0; 
-  Background-color: #79DABA;
+  Background-color: #956b6b;
 `;
 const _header_listitem = styled.li`
 display: flex;
@@ -20,6 +20,7 @@ list-style: none;
 margin: 0.1em; 
 font-style: oblique 60deg;
 font-family:'AmstelvarAlpha';
+font-weight: 900;
 `;
 
   return (
