@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import FavoriteButton from "../components/FavoriteButton";
 import { calculateAspectRatioFit } from "../utils/fit-image";
-import useResize from "../hooks/use-resize";
+import useResize from "../hooks/useResize";
 import styled from "styled-components";
 
 const FavoriteButtonStyled = styled.div`

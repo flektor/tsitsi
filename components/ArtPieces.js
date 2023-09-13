@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import FavoriteButton from "./FavoriteButton";
 import { calculateAspectRatioFit } from "../utils/fit-image";
-import useResize from "../hooks/use-resize";
+import useResize from "../hooks/useResize";
 
 const FavoriteButtonStyled = styled.div`
   position: absolute;
