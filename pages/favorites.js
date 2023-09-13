@@ -50,7 +50,7 @@ export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
     .map((item) => item.slug);
 
   const maxWidth = windowSize.width * 0.95;
-  const maxHeight = windowSize.height * 0.8;
+  const maxHeight = windowSize.height * 0.85;
 
   const items = pieces
     .filter((item) => favorites.includes(item.slug))
@@ -101,7 +101,7 @@ export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
 
   return (
     <div>
-      ArtPieces
+      {items.length === 0 && "You do have not favorites yet!"}
       <ArtPiecesList aria-label="artPieces">{items}</ArtPiecesList>
     </div>
   );
