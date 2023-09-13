@@ -1,17 +1,9 @@
-import Spotlight from "../components/Spotlight";
+import ArtPieces from "../components/ArtPieces";
 
-export default function SpotlightPage({
-  pieces,
-  onToggleFavorite,
-  artPiecesInfo,
-}) {
+export default function Index(props) {
   return (
     <div>
-      <Spotlight
-        pieces={pieces}
-        onToggleFavorite={onToggleFavorite}
-        artPiecesInfo={artPiecesInfo}
-      />
+      <ArtPieces {...props} />
     </div>
   );
 }
