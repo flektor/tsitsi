@@ -8,10 +8,12 @@ const StyledTextarea = styled.textarea`
   overflow: hidden;
   border: 3px solid white;
   border-radius: 1em;
+  font-size: large;
 `;
 const Button_styled = styled.button`
   background-color: #4caf50; /* grey */
-  border: 2px solid red;
+  border-radius: 1em;
+  border: none;
   color: white;
   padding: 1em;
   text-decoration: none;
@@ -30,7 +32,7 @@ export default function CommentForm({ slug, onSubmitComment }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <StyledTextarea name="context" rows={4} required />
+      <StyledTextarea name="context" rows={3} required />
       <Button_styled type="submit">Comment</Button_styled>
     </form>
   );
