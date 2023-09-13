@@ -33,10 +33,30 @@ const ArtPiecesListItem = styled.li`
   position: relative;
 `;
 
-const Footer = styled.footer`
+const ArtPieceFooter = styled.footer`
   display: flex;
   justify-content: space-between;
 `;
+
+
+const Main = styled.main`
+  min-height: 100%;
+`;
+
+const Content = styled.div`
+  min-height: ${() => window.innerHeight * .86 + "px"};
+`;
+
+const Footer = styled.footer`
+height: 3em;
+display: flex;
+justify-content: center;
+align-items: center;
+bottom: 0;
+width: 100%; 
+bottom: 0;
+`;
+
 
 export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
   const windowSize = useResize();
@@ -67,7 +87,7 @@ export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
           maxWidth={maxWidth + 100}
           maxHeight={maxHeight + 100}
         >
-          <h2>{piece.name}</h2>
+          <h3>{piece.name}</h3>
 
           <Image
             src={piece.imageSource}
@@ -82,7 +102,7 @@ export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
               slug={piece.slug}
             />
           </FavoriteButtonStyled>
-          <Footer>
+          <ArtPieceFooter>
             <span>
               Artist: <strong aria-label="artist">{piece.artist}</strong>
             </span>
@@ -94,15 +114,18 @@ export default function favorites({ pieces, onToggleFavorite, artPiecesInfo }) {
             >
               Details
             </Link>
-          </Footer>
+          </ArtPieceFooter>
         </ArtPiecesListItem>
       );
     });
 
   return (
-    <div>
-      {items.length === 0 && "You do have not favorites yet!"}
-      <ArtPiecesList aria-label="artPieces">{items}</ArtPiecesList>
-    </div>
+    <Content>
+      <Main>
+        {items.length === 0 && "You do have not favorites yet!"}
+        <ArtPiecesList aria-label="artPieces">{items}</ArtPiecesList>
+      </Main>
+      <Footer>Tsitsi® @SPICED Academy 2023 </Footer>
+    </Content>
   );
 }

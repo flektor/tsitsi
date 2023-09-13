@@ -1,6 +1,24 @@
 import { useRouter } from "next/router.js";
 import ArtPieceDetails from "../../components/ArtPieceDetails";
 import PageNotFound from "../../components/pageNotFound";
+
+import styled from "styled-components";
+
+const Main = styled.main`
+  height:100%;
+`;
+
+const Footer = styled.footer`
+height: 3em;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%; 
+bottom: 0;
+margin-top:-.8em;
+`;
+
+
 export default function ArtDetails({
   pieces,
   artPiecesInfo,
@@ -26,14 +44,19 @@ export default function ArtDetails({
 
   const isFavorite = artPieceInfo && artPieceInfo.isFavorite;
   return (
-    <ArtPieceDetails
-      {...piece}
-      isFavorite={isFavorite}
-      onToggleFavorite={onToggleFavorite}
-      colors={piece.colors}
-      onSubmitComment={onSubmitComment}
-      comments={artPieceInfo.comments}
-      imageDimensions={piece.dimensions}
-    />
+    <div>
+      <Main>
+        <ArtPieceDetails
+          {...piece}
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+          colors={piece.colors}
+          onSubmitComment={onSubmitComment}
+          comments={artPieceInfo.comments}
+          imageDimensions={piece.dimensions}
+        />
+      </Main>
+      <Footer>Tsitsi® @SPICED Academy 2023 </Footer>
+    </div >
   );
 }

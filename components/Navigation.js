@@ -47,19 +47,6 @@ export default function Navigation({ children }) {
     padding-bottom: 2em;
     margin-top: 4em;
   `;
-
-  const Footer = styled.footer`
-    height: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #21252b;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin-top: 10em;
-  `;
-
   return (
     <Content>
       <Nav>
@@ -88,7 +75,6 @@ export default function Navigation({ children }) {
       </Nav>
       <Children>{children}</Children>
 
-      <Footer>Tsitsi® @SPICED Academy 2023 </Footer>
     </Content>
   );
 }
