@@ -80,6 +80,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
           alt={piece.name}
           width={width}
           height={height}
+          priority
         />
         <FavoriteButtonStyled>
           <FavoriteButton
