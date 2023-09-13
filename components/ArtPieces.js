@@ -30,13 +30,20 @@ const ArtPiecesListItem = styled.li`
   max-height: ${(maxHeight) => maxHeight};
   padding: 0;
   margin: 0;
-  position: relative;
+  position: relative;  
 `;
 
 const Footer = styled.footer`
   display: flex;
   justify-content: space-between;
 `;
+
+
+const Title = styled.h3`
+  margin-bottom: .5em;
+`;
+
+
 
 export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
   const windowSize = useResize();
@@ -50,7 +57,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
     .map((item) => item.slug);
 
   const maxWidth = windowSize.width * 0.95;
-  const maxHeight = windowSize.height * 0.8;
+  const maxHeight = windowSize.height * 0.85;
 
   const items = pieces.map((piece) => {
     const { width, height } = calculateAspectRatioFit(
@@ -66,7 +73,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
         maxWidth={maxWidth + 100}
         maxHeight={maxHeight + 100}
       >
-        <h2>{piece.name}</h2>
+        <Title>{piece.name}</Title>
 
         <Image
           src={piece.imageSource}
