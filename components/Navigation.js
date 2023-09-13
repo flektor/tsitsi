@@ -1,21 +1,25 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+
 export default function Navigation({ children }) {
   const Nav = styled.nav`
     display: flex;
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #956b6b;
+    background-color: #1a1a1a;
     align-items: center;
     z-index: 10;
-    height: 3em;
+    height: 3em;  
+    /* height: 4em;   */
+    /* padding: .5em; */
   `;
 
   const List = styled.ul`
     display: flex;
     justify-content: flex-end;
+
     width: 100%;
     list-style: none;
   `;
@@ -23,12 +27,16 @@ export default function Navigation({ children }) {
   const Item = styled.li`
     padding-left: 0.5em;
     padding-right: 0.5em;
+    margin-top:  -0.2em;
   `;
 
   const Title = styled.span`
     justify-content: flex-end;
     font-family: "AmstelvarAlpha";
     padding-left: 1em;
+    white-space: nowrap;
+    font-size: 1.1em;
+    margin-left:-.5em;
   `;
 
   const Content = styled.div`
@@ -41,7 +49,7 @@ export default function Navigation({ children }) {
   `;
 
   const Footer = styled.footer`
-    height: 5em;
+    height: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,13 +69,13 @@ export default function Navigation({ children }) {
           </Link>
         </Title>
         <List>
-          <Item>
+          {/* <Item>
             <Link href={"/art-pieces/"} style={{ color: "white" }}>
               Art Pieces
             </Link>
-          </Item>
+          </Item> */}
           <Item>
-            <Link href={"/"} style={{ color: "white" }}>
+            <Link href={"/spotlight/"} style={{ color: "white" }}>
               Spotlight
             </Link>
           </Item>
@@ -80,7 +88,7 @@ export default function Navigation({ children }) {
       </Nav>
       <Children>{children}</Children>
 
-      {/* <Footer>Tsitsi® 2023</Footer> */}
+      <Footer>Tsitsi® @SPICED Academy 2023 </Footer>
     </Content>
   );
 }
