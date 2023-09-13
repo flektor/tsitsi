@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import FavoriteButton from "./FavoriteButton";
-import useResize from "../hooks/use-resize";
+import useResize from "../hooks/useResize";
 import { calculateAspectRatioFit } from "../utils/fit-image";
 import styled from "styled-components";
 import Link from "next/link";

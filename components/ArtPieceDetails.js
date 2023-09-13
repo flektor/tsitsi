@@ -5,7 +5,7 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import styled from "styled-components";
 import { calculateAspectRatioFit } from "../utils/fit-image";
-import useResize from "../hooks/use-resize";
+import useResize from "../hooks/useResize";
 
 const Color = styled.div`
   width: 2em;
